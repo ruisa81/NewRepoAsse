@@ -1,3 +1,5 @@
+package uk.ac.uof.i2p.speaker;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,13 +8,16 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class TestingConnection {
+public class TestingConnection extends MailMan{
 
     private static HttpURLConnection con;
 
     public static void main(String [] args) throws MalformedURLException, ProtocolException, IOException {
 
-        String url = "http://i2j.openode.io/student?id=s195237";
+        MailMan sender = new MailMan();
+
+       // String url = sender.getAddress();    //this line make it goes BOOM!
+       String url = "http://i2j.openode.io/student?id=s195237";
 
         try {
             URL myURL = new URL(url);
