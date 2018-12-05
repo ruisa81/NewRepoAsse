@@ -16,7 +16,7 @@ public class TestingConnection extends MailMan{
 
         MailMan sender = new MailMan();
 
-       // String url = sender.getAddress();    //this line make it goes BOOM!
+       //String url = sender.getAddress();    //this line make it goes BOOM!
        String url = "http://i2j.openode.io/student?id=s195237";
 
         try {

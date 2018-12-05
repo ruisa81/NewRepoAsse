@@ -4,7 +4,7 @@ public class MailMan {
 
 
     public Task task;
-    public static String URLBASE ="http://i2p.openode.io";
+    public String URLBASE ="http://i2p.openode.io";
     public String studentId = "s195237";
     private String address ="NULL";
 
