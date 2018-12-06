@@ -4,7 +4,7 @@ public class MailMan {
 
 
     public Task task;
-    public String URLBASE ="http://i2p.openode.io";
+    public String URLBASE ="http://i2j.openode.io";
     public String studentId = "s195237";
     private String address ="NULL";
 
@@ -18,7 +18,7 @@ public class MailMan {
 
     public String getFirstURL(){
 
-        this.setAddress(URLBASE + "/student?id=" + this.studentId);
+        this.setAddress("/student?id=" + this.studentId);
         System.out.println(this.getAddress());
         return getAddress();
     }
