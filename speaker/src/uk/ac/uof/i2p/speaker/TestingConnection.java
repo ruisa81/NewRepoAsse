@@ -14,7 +14,7 @@ public class TestingConnection extends MailMan{
 
     public static void main(String [] args) throws MalformedURLException, ProtocolException, IOException {
 
-        MailMan sender = new MailMan();
+       MailMan sender = new MailMan();
 
        String url = sender.getFirstURL();
 

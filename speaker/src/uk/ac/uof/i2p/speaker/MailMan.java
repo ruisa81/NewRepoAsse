@@ -26,4 +26,10 @@ public class MailMan {
     public String getAddress() {
         return address;
     }
+
+    public void buildTasks(String content){
+
+
+
+    }
 }
