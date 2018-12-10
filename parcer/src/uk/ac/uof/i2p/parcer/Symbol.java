@@ -18,3 +18,6 @@ public class Symbol {
     }
 
 }
+
+//todo start to parcer
+//todo start task parcer to write file

@@ -1,8 +1,10 @@
+//todo exception handling
+
+//todo remove main class
+//todo refactoring
+//todo java docs
+
 package uk.ac.uof.i2p.speaker;
-
-import jdk.internal.net.http.HttpRequestImpl;
-
-import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStreamReader;

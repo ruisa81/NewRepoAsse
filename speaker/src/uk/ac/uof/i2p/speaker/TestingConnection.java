@@ -8,6 +8,12 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+//todo method to pass to task generator
+//todo refactoring
+//todo remove main class
+//todo java docs
+
+
 public class TestingConnection extends MailMan{
 
     private static HttpURLConnection con;
