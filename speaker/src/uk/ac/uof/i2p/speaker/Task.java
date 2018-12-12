@@ -4,6 +4,12 @@ public class Task {
 
     private String origin;
     private String destination;
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    private String taskId;
     private boolean done = false;
     private boolean queued = false;
     private boolean okay = false;

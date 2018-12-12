@@ -2,11 +2,11 @@ package uk.ac.uof.i2p.speaker;
 
 import java.util.Collection;
 
-public interface Tasks {
+public interface Tasks{
     void addTask(Task task);
     void addTask(String content);
-    void getTask();
-
+    Task getOpenTask();
+    boolean createFileTask(Task task);
     Collection <Task> getActiveTasks();
 
 }

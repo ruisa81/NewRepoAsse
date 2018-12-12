@@ -1,7 +1,8 @@
-package uk.ac.uof.i2p.parcer;
+package uk.ac.uof.i2p.parser;
 
 public class Symbol {
-    public enum Type { OSTART, OCLOSE, OBJECT, SWRAP, SESCAPE, STRING, VALUE, ASTART, ARRAY, ACLOSE, SEPARATOR, DEFINE, CHARACTER, NUMBER, OTHER}
+    public enum Type { SPACE, OOPEN, OCLOSE, OBJECT, ST_WRAP, ST_ESCAPE, VALUE, ASTART, ARRAY, ACLOSE,
+        SEPARATOR, DEFINE, WORD, NUMBER, OTHER }
 
 
     public final Type type;
@@ -19,5 +20,5 @@ public class Symbol {
 
 }
 
-//todo start to parcer
-//todo start task parcer to write file
+//todo start to parser
+//todo start task parser to write file
