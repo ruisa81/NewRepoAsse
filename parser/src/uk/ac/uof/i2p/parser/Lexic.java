@@ -29,10 +29,10 @@ public class Lexic {
             }
             return new Symbol(Symbol.Type.SPACE);
         }
-        if(Character.isLetterOrDigit(c)){
+        if(Character.isLetterOrDigit(c)) {
             StringBuffer word = new StringBuffer();
-            while(Character.isLetterOrDigit((char)c)){
-                word.append((char)c);
+            while (Character.isLetterOrDigit((char) c)) {
+                word.append((char) c);
                 c = reader.read();
             }
             return new Symbol(Symbol.Type.WORD, word.toString());
