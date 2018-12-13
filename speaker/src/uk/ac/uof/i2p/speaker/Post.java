@@ -55,7 +55,8 @@ public class Post {
             //print result
             System.out.println(response.toString());
         }catch (Exception exception){
-            System.out.println("Exception during post answer" + exception);
+            System.out.println("Exception during post answer");
+            exception.printStackTrace();
         }finally {
             wr.flush();
             wr.close();
