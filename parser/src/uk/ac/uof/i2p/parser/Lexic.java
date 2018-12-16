@@ -2,32 +2,51 @@ package uk.ac.uof.i2p.parser;
 
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 
 public class Lexic {
 
-    private final Reader reader;
+    private final InputStreamReader reader;
 
-     public Lexic(Reader reader){
-        this.reader = reader;
+
+    public Lexic(InputStream reader){
+        this.reader = new InputStreamReader(reader);
 
     }
+
+
 
     public Symbol next() throws IOException {
         int c = reader.read();
 
         if(-1 == c) return null;
         if('{' == c ) {
-            //I have to expect an object here
+            //todo create JSON object here
             return new Symbol(Symbol.Type.OOPEN, "{");
         }
         if('}' == c ) return new Symbol(Symbol.Type.OCLOSE,"}");
-        if('"' == c ) return new Symbol(Symbol.Type.ST_WRAP,"\"");
+        if('"' == c ) {
+            //todo cread word here
+            return new Symbol(Symbol.Type.ST_WRAP,"\"");
+        }
         //if('' == c ) return new Symbol(Symbol.Type.ST_ESCAPE); escape from String for extended marks
-        if('[' == c ) return new Symbol(Symbol.Type.ASTART, "[");
+        if('[' == c ){
+            //todo create array here
+            return new Symbol(Symbol.Type.ASTART, "[");
+        }
+
         if(']' == c ) return new Symbol(Symbol.Type.ACLOSE, "]");
-        if(',' == c ) return new Symbol(Symbol.Type.SEPARATOR, ",");
-        if(':' == c ) return new Symbol(Symbol.Type.DEFINE, ":");
+        if(',' == c ){
+            //todo expect to read next a member or a element
+            return new Symbol(Symbol.Type.SEPARATOR, ",");
+        }
+        if(':' == c ){
+            //todo expecting to create element here
+            return new Symbol(Symbol.Type.DEFINE, ":");
+        }
+
         if(Character.isWhitespace(c)) {
             while (Character.isWhitespace(c)) {
                 c = reader.read();
@@ -45,4 +64,9 @@ public class Lexic {
 
         return new Symbol(Symbol.Type.OTHER , Character.toString((char)c));
     }
+
+
+
+
+
 }
