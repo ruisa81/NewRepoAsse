@@ -1,27 +1,35 @@
 package uk.ac.uof.i2p.parser;
 import org.junit.jupiter.api.Assertions;
-
+import org.junit.jupiter.api.Test;
 
 
 class ParserTest {
 
     @org.junit.jupiter.api.Test
-    void unWrapString() {
+    void wrapString() {
 
-        Parser test = new Parser();
+
         String string = "ajvvdjhabdlajknsdjn";
-        string = test.wrapString(string,'{','}');
+        string = Parser.wrapString(string,'{','}');
 
         Assertions.assertEquals("{ajvvdjhabdlajknsdjn}",string);
     }
 
     @org.junit.jupiter.api.Test
-    void wrapString() {
-        Parser test = new Parser();
+    void unWrapString() {
+
         String string = "\"ajvvdjhabdlajknsdjn\"";
-        string = test.unWrapString(string,'"');
+        string = Parser.unWrapString(string,'"','"');
 
         Assertions.assertEquals("ajvvdjhabdlajknsdjn",string);
+
+
+
+    }
+
+    @Test
+    void parseSymbol() {
+
 
 
 

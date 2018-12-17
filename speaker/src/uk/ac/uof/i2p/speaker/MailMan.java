@@ -1,37 +1,39 @@
 package uk.ac.uof.i2p.speaker;
 
-
-
 public class MailMan {
 
+	private final String STUDENT_PATH = "/student?id=";
+	private final String URL_BASE = "http://i2j.openode.io";
 
-    public Task task;
-    public String URLBASE ="http://i2j.openode.io";
-    public String studentId = "s195237";
-    private String address ="NULL";
+	public Task task;
+	public String studentId;
+	private String address = null;
 
-    public MailMan() {
-    }
+	public MailMan() {}
 
+	public MailMan(String studentId) {
+		this.studentId = studentId;
+		setAddress(STUDENT_PATH + studentId);
 
-    public void setAddress(String address) {
-        this.address = URLBASE + address;
-    }
+		System.out.println("MailMan created with address: " + this.address);
+	}
 
-    public String getFirstURL(){
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = URL_BASE + address;
+	}
 
-        this.setAddress("/student?id=" + this.studentId);
-        System.out.println(this.getAddress());
-        return getAddress();
-    }
+	public String getFirstURL() {
+		this.setAddress("/student?id=" + this.studentId);
+		System.out.println(this.getAddress());
 
-    public String getAddress() {
-        return address;
-    }
+		return getAddress();
+	}
 
-    public void buildTask(String content){
+	public void buildTask(String content) {
 
-
-
-    }
+	}
 }

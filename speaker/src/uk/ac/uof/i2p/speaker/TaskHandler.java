@@ -7,31 +7,31 @@ import java.util.*;
 
 public class TaskHandler implements Tasks {
 
-    public List <Task> taskList;
+	public List<Task> taskList;
 
-    @Override
-    public void addTask(Task task) {
-        this.taskList.add(task);
-    }
+	@Override
+	public void addTask(Task task) {
+		this.taskList.add(task);
+	}
 
-    @Override
-    public void addTask(String content) {
+	@Override
+	public void addTask(String content) {
 
-    }
+	}
 
-    @Override
-    public Task getOpenTask() {
+	@Override
+	public Task getOpenTask() {
 
-        return null;
-     }
+		return null;
+	}
 
-    @Override
-    public boolean createFileTask(Task task) {
-        return false;
-    }
+	@Override
+	public boolean createFileTask(Task task) {
+		return false;
+	}
 
-    @Override
-    public Collection<Task> getActiveTasks() {
-        return null;
-    }
+	@Override
+	public Collection<Task> getActiveTasks() {
+		return null;
+	}
 }
