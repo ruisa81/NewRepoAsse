@@ -1,7 +1,4 @@
-package uk.ac.uof.i2p.speaker;
-
-import uk.ac.uof.i2p.speaker.Task;
-import uk.ac.uof.i2p.speaker.Tasks;
+package uk.ac.uof.i2p.coms;
 
 import java.util.*;
 

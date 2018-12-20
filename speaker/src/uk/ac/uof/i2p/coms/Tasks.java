@@ -1,4 +1,4 @@
-package uk.ac.uof.i2p.speaker;
+package uk.ac.uof.i2p.coms;
 
 //I dont know if this is usefull !
 import java.util.Collection;

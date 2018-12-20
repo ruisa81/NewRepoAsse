@@ -1,4 +1,4 @@
-package uk.ac.uof.i2p.speaker;
+package uk.ac.uof.i2p.coms;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class DialUp extends MailMan {
 
 	private static HttpURLConnection con;
 
-	public static void main(String[] args) throws MalformedURLException, ProtocolException, IOException {
+	public static void main(String[] args) throws  IOException {
 
 		MailMan sender = new MailMan("s195237");
 

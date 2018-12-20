@@ -1,4 +1,4 @@
-package uk.ac.uof.i2p.speaker;
+package uk.ac.uof.i2p.coms;
 
 public class Task {
 

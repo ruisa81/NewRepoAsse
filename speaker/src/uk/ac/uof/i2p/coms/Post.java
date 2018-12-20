@@ -4,7 +4,7 @@
 //todo refactoring
 //todo java docs
 
-package uk.ac.uof.i2p.speaker;
+package uk.ac.uof.i2p.coms;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

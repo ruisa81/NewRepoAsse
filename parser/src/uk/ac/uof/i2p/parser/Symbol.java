@@ -1,6 +1,6 @@
 package uk.ac.uof.i2p.parser;
 
-public class Symbol {
+public class Symbol extends Value {
 
 	public enum Type {
 		SPACE,
@@ -8,8 +8,8 @@ public class Symbol {
 		OCLOSE,
 		OBJECT,
 		ST_WRAP,
+		STRING,
 		ST_ESCAPE,
-		VALUE,
 		ASTART,
 		ARRAY,
 		ACLOSE,
@@ -19,9 +19,8 @@ public class Symbol {
 		NUMBER,
 		OTHER
 	}
-
-	public final Type type;
-	public final String value;
+	final Type type;
+	final String value;
 
 	public Symbol(Type type, String value) {
 
@@ -48,10 +47,13 @@ public class Symbol {
 		if (type != Type.NUMBER) {
 			System.out.println("Symbol is not an integer");
 			return -999;
-		}
-
-		return Integer.parseInt(value);
+		}else
+			return Integer.parseInt(value);
 	}
+
+
+
+
 
 }
 

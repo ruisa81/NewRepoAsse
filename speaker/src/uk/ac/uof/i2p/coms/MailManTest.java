@@ -1,4 +1,4 @@
-package uk.ac.uof.i2p.speaker;
+package uk.ac.uof.i2p.coms;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

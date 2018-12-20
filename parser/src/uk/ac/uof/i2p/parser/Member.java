@@ -1,18 +1,29 @@
 package uk.ac.uof.i2p.parser;
 
-// TODO split by colon (:)
-// TODO populate name with first token
-// TODO populate element with second token
+
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Member {
 
-	private String name;
-	private Value element;
+	final String name;
+	public List<Symbol> element = new ArrayList<>();
 
-	public Member(String member) {
-		String[] tokens = member.split(":");
-
-		this.name = tokens[0];
-		this.element = new Value(tokens[1]);
+	public String getName() {
+		return name;
 	}
 
+	public Member(String memberName) {
+		this.name = memberName;
+	}
+
+	public Member(String memberName, Symbol element) {
+		this.name = memberName;
+		this.element.add(element);
+	}
+
+	public List getParameters() {
+		return element;
+	}
 }
