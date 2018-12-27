@@ -8,9 +8,18 @@ class MailManTest {
     @Test
     void getFirstURLTest() {
 
-        MailMan mailMan = new MailMan();
-        String url = mailMan.getFirstURL();
+        MailMan mailMan1 = new MailMan("s195237");
+        String url = mailMan1.getFirstURL();
 
         Assertions.assertEquals("http://i2j.openode.io/student?id=s195237",url);
+
+        MailMan mailMan0 = new MailMan();
+        String url0 = mailMan1.getFirstURL();
+
+        Assertions.assertEquals("http://i2j.openode.io/student?id=s195237",url0);
     }
+
+
+
+
 }

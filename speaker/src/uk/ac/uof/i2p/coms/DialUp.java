@@ -23,34 +23,43 @@ public class DialUp extends MailMan {
 
 	public static void main(String[] args) throws  IOException {
 
-		MailMan sender = new MailMan("s195237");
 
-		String url = sender.getAddress();
+		MailMan sender= new MailMan();
 
-		try {
-			URL myURL = new URL(url);
-
-			con = (HttpURLConnection) myURL.openConnection();
-			con.setRequestMethod("GET");
-			StringBuilder content;
-
-			try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-
-				String line;
-				content = new StringBuilder();
-
-				while ((line = in.readLine()) != null) {
-
-					content.append(line);
-					content.append(System.lineSeparator());
-				}
+		if (args != null){
+			try {
+				sender = new MailMan(args[0]);
+			}catch (Exception e){
+				System.out.println("error on Input argument value: \n" + e.toString());
 			}
-
-			System.out.println(content.toString());
-
-		} finally {
-			con.disconnect();
 		}
+
+			String url = sender.getAddress();
+
+			try {
+				URL myURL = new URL(url);
+
+				con = (HttpURLConnection) myURL.openConnection();
+				con.setRequestMethod("GET");
+				StringBuilder content;
+
+				try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+
+					String line;
+					content = new StringBuilder();
+
+					while ((line = in.readLine()) != null) {
+
+						content.append(line);
+						content.append(System.lineSeparator());
+					}
+				}
+
+				System.out.println(content.toString());
+
+			} finally {
+				con.disconnect();
+			}
 
 	}
 }
