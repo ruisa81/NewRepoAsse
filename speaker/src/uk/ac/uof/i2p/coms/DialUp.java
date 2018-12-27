@@ -10,7 +10,6 @@ import java.net.URL;
 
 //TODO method to pass to task generator
 //TODO refactoring
-//TODO remove main class
 //TODO java docs
 
 /**
@@ -34,32 +33,46 @@ public class DialUp extends MailMan {
 			}
 		}
 
-			String url = sender.getAddress();
 
-			try {
-				URL myURL = new URL(url);
+		String message = DialUp.geTasks(sender);
+		System.out.println(message);
 
-				con = (HttpURLConnection) myURL.openConnection();
-				con.setRequestMethod("GET");
-				StringBuilder content;
 
-				try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+	}
 
-					String line;
-					content = new StringBuilder();
 
-					while ((line = in.readLine()) != null) {
+	public static String geTasks(MailMan sender) throws IOException{
 
-						content.append(line);
-						content.append(System.lineSeparator());
-					}
+		String url = sender.getAddress();
+		URL myURL = new URL(url);
+		HttpURLConnection con;
+		con = (HttpURLConnection) myURL.openConnection();
+		StringBuilder content = new StringBuilder();
+
+		try {
+
+			con.setRequestMethod("GET");
+
+			try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+
+				String line;
+
+
+				while ((line = in.readLine()) != null) {
+
+					content.append(line);
+					content.append(System.lineSeparator());
 				}
-
-				System.out.println(content.toString());
-
-			} finally {
-				con.disconnect();
 			}
+		}finally {
+
+			con.disconnect();
+		}
+		return content.toString();
 
 	}
 }
+
+
+
+

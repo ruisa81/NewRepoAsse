@@ -5,9 +5,7 @@ public class Task {
 	private String origin;
 	private String destination;
 
-	public String getTaskId() {
-		return taskId;
-	}
+
 
 	private String taskId;
 	private boolean done = false;
@@ -21,10 +19,15 @@ public class Task {
 		this.origin = origin;
 		this.destination = destination;
 		this.jsonTask = json;
-		this.setDoneFalse();
-		this.setOkayTrue();
-		this.setQueuedFalse();
+		this.setDone(false);
+		this.setOkay(true);
+		this.setQueued(false);
 		this.answer = "Not answered yet";
+	}
+
+
+	public String getTaskId() {
+		return taskId;
 	}
 
 	public String getAnswer() {
@@ -43,28 +46,20 @@ public class Task {
 		return destination;
 	}
 
-	public void setDoneTrue() {
-		done = true;
+	public void setDone(boolean b) {
+		done = b;
 	}
 
-	public void setDoneFalse() {
-		done = false;
+
+	public void setQueued(boolean b) {
+		queued = b;
 	}
 
-	public void setQueuedTrue() {
-		queued = true;
+
+	public void setOkay(boolean b) {
+		okay = b;
 	}
 
-	public void setQueuedFalse() {
-		queued = false;
-	}
 
-	public void setOkayTrue() {
-		okay = true;
-	}
-
-	public void setOkayFalse() {
-		okay = false;
-	}
 
 }
