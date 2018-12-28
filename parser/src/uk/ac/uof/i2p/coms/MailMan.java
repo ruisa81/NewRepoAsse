@@ -11,7 +11,7 @@ public class MailMan {
 	private final static String URL_BASE = "http://i2j.openode.io";
 	private final String DEFAULT_STUDENT ="s195237";
 
-	public Task task;
+
 	public String studentId;
 	private String address = null;
 

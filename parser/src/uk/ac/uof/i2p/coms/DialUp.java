@@ -2,6 +2,7 @@ package uk.ac.uof.i2p.coms;
 
 import uk.ac.uof.i2p.parser.Parser;
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -28,12 +29,12 @@ public class DialUp extends MailMan {
 			try {
 				sender = new MailMan(args[0]);
 			}catch (Exception e){
-				System.out.println("Exception on Input argument value: \n" + e.toString());
+				System.out.println("No input student number. Using default");
 			}
 		}
 
 
-		String message = geTasks(sender);
+		String message = httpGet(sender);
 		message = message.trim();
 		message = Parser.unWrapString(message,'{','}');
 
@@ -44,28 +45,38 @@ public class DialUp extends MailMan {
 		for (int i=0 ; i < parts.length ;  i++) {
 			parts[i] = Parser.unWrapString(parts[i],'"' ,'"');
 
+			Task t = new Task(parts[i]);
+			sender.setAddress(t.getOrigin());
+			String jsoncode = httpGet(sender);
+			t.setJsonTask(jsoncode.trim());
 
-			System.out.println(parts[i]);
+			Tasks.tasks.add(t);
+
+			System.out.println(t.getOrigin());
+			System.out.println(t.getDestination());
+			System.out.println(t.getTaskId());
+
+
+			System.out.println(t.getJsonTask()+"\n");
+
 		}
 	}
 
 
-	public static String geTasks(MailMan sender) throws IOException{
+	public static String httpGet(MailMan sender) throws IOException{
 
 		String url = sender.getAddress();
 		URL myURL = new URL(url);
-		HttpURLConnection con;
+	//	HttpURLConnection con;
 		con = (HttpURLConnection) myURL.openConnection();
 		StringBuilder content = new StringBuilder();
 
 		try {
-
 			con.setRequestMethod("GET");
 
 			try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
 
 				String line;
-
 
 				while ((line = in.readLine()) != null) {
 
@@ -82,6 +93,52 @@ public class DialUp extends MailMan {
 			con.disconnect();
 		}
 		return content.toString();
+
+	}
+
+	public static String httpPost(String url, String parameters) throws Exception {
+
+		URL obj = new URL(url);
+		con = (HttpURLConnection) obj.openConnection();
+		con.setRequestMethod("POST");
+		StringBuffer response = new StringBuffer();
+		DataOutputStream wr = null;
+
+		try {
+			con.setDoOutput(true);
+			wr = new DataOutputStream(con.getOutputStream());
+			wr.writeBytes(parameters);
+			wr.flush();
+			wr.close();
+
+			int responseCode = con.getResponseCode();
+			System.out.println("\nSending 'POST' request to URL : " + url);
+			System.out.println("Post parameters : " + parameters);
+			if (responseCode!=200) {
+				System.out.println("Response Code : " + responseCode);
+			}
+
+			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			String inputLine;
+
+
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+
+			// print result
+			System.out.println(response.toString());
+
+		} catch (Exception exception) {
+			System.out.println("Exception during post:");
+			exception.printStackTrace();
+		} finally {
+			wr.flush();
+			wr.close();
+		}
+
+		return response.toString();
 
 	}
 }

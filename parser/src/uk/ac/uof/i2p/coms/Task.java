@@ -1,12 +1,11 @@
 package uk.ac.uof.i2p.coms;
 
+import uk.ac.uof.i2p.parser.Parser;
+
 public class Task {
 
 	private String origin;
 	private String destination;
-
-
-
 	private String taskId;
 	private boolean solved = false;
 	private boolean haveJson = false;
@@ -16,6 +15,7 @@ public class Task {
 
 	public String jsonTask = "Empty";
 	public String answer = "We have a problem";
+
 
 	public Task(String origin, String destination, String json) {
 
@@ -29,9 +29,12 @@ public class Task {
 	}
 
 	public Task(String taskNumber){
-		this.origin = MailMan.getURL_BASE()+taskNumber;
+		this.origin = taskNumber;
 		this.setHaveJson(false);
 		this.setSolved(false);
+		int index = taskNumber.lastIndexOf('/')+1;
+		this.taskId =  taskNumber.substring(index).trim();
+		this.destination = "/answer/" + this.taskId;
 
 	}
 
@@ -42,7 +45,13 @@ public class Task {
 
 	public void setJsonTask(String jsonTask) {
 		this.jsonTask = jsonTask;
+		this.haveJson = true;
 	}
+
+	public String getJsonTask() {
+		return jsonTask;
+	}
+
 
 	public String getAnswer() {
 		return answer;
@@ -75,5 +84,12 @@ public class Task {
 	}
 
 
+	private String generateDestination(String taskNumber){
+		StringBuilder dest = new StringBuilder();
 
+		taskNumber = Parser.removeWhiteSpace(taskNumber);
+
+
+		return dest.toString();
+	}
 }
