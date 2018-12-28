@@ -1,6 +1,7 @@
 package uk.ac.uof.i2p.coms;
 
 import uk.ac.uof.i2p.parser.Parser;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -47,19 +48,19 @@ public class DialUp extends MailMan {
 
 			Task t = new Task(parts[i]);
 			sender.setAddress(t.getOrigin());
-			String jsoncode = httpGet(sender);
-			t.setJsonTask(jsoncode.trim());
+			String jSonCode = httpGet(sender);
+			t.setJsonTask(jSonCode.trim());
 
 			Tasks.tasks.add(t);
-
+/*control block on the task set up
 			System.out.println(t.getOrigin());
 			System.out.println(t.getDestination());
 			System.out.println(t.getTaskId());
-
-
 			System.out.println(t.getJsonTask()+"\n");
+*/
 
 		}
+        System.out.println(Tasks.tasks.size());
 	}
 
 
@@ -67,7 +68,6 @@ public class DialUp extends MailMan {
 
 		String url = sender.getAddress();
 		URL myURL = new URL(url);
-	//	HttpURLConnection con;
 		con = (HttpURLConnection) myURL.openConnection();
 		StringBuilder content = new StringBuilder();
 
