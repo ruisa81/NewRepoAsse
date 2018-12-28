@@ -86,13 +86,16 @@ public interface Parser {
 	}
 
 	static String unWrapString(String string, char c1, char c2) {
+
+
 		if (string.charAt(0) != c1) {
 			System.out.println("Input string do not start with " + c1);
 			System.out.println("String return without change");
 			System.out.println(string);
 			return string;
 		}
-		if (string.charAt(string.length() - 1) != c2) {
+//		System.out.println("last char " + string.charAt(string.length()-1)); used to test white space errors;
+		if (string.charAt(string.length()-1) != c2) {
 			System.out.println("Input string do not finish with " + c2);
 			System.out.println("String returned without change");
 			System.out.println(string);
@@ -145,6 +148,20 @@ public interface Parser {
 				return new Symbol(Symbol.Type.OTHER, Character.toString((char) c));
 		}
 
+	}
+
+	static String removeWhiteSpace(String string){
+
+		StringBuffer word = new StringBuffer();
+		for(int i=0; i<string.length();i++ ){
+
+			if (Character.isWhitespace(string.charAt(i)))
+				continue;
+			else
+				word.append(string.charAt(i));
+		}
+
+		return word.toString();
 	}
 
 }

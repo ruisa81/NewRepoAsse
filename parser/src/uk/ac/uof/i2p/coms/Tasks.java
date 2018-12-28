@@ -1,7 +1,9 @@
 package uk.ac.uof.i2p.coms;
 
 //I dont know if this is usefull !
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public interface Tasks {
 
@@ -11,8 +13,7 @@ public interface Tasks {
 
 	Task getOpenTask();
 
-	boolean createFileTask(Task task);
+	public static List <Task> tasks = new ArrayList<>();
 
-	Collection<Task> getActiveTasks();
 
 }

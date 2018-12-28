@@ -3,7 +3,12 @@ package uk.ac.uof.i2p.coms;
 public class MailMan {
 
 	private final String STUDENT_PATH = "/student?id=";
-	private final String URL_BASE = "http://i2j.openode.io";
+
+	public static String getURL_BASE() {
+		return URL_BASE;
+	}
+
+	private final static String URL_BASE = "http://i2j.openode.io";
 	private final String DEFAULT_STUDENT ="s195237";
 
 	public Task task;

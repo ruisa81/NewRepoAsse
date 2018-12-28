@@ -34,4 +34,11 @@ class ParserTest {
 
 
     }
+
+    @Test
+    public void removeWhiteSpace() {
+        String s = Parser.removeWhiteSpace("hello world");
+        System.out.println(s);
+
+    }
 }

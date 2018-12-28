@@ -1,11 +1,10 @@
 package uk.ac.uof.i2p.coms;
 
+import uk.ac.uof.i2p.parser.Parser;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 //TODO method to pass to task generator
@@ -29,15 +28,25 @@ public class DialUp extends MailMan {
 			try {
 				sender = new MailMan(args[0]);
 			}catch (Exception e){
-				System.out.println("error on Input argument value: \n" + e.toString());
+				System.out.println("Exception on Input argument value: \n" + e.toString());
 			}
 		}
 
 
-		String message = DialUp.geTasks(sender);
-		System.out.println(message);
+		String message = geTasks(sender);
+		message = message.trim();
+		message = Parser.unWrapString(message,'{','}');
+
+		CharSequence tasksList = message.subSequence(message.indexOf('[')+1,message.indexOf(']'));
+		String s = tasksList.toString();
+		String [] parts = s.split(",");
+
+		for (int i=0 ; i < parts.length ;  i++) {
+			parts[i] = Parser.unWrapString(parts[i],'"' ,'"');
 
 
+			System.out.println(parts[i]);
+		}
 	}
 
 
@@ -64,7 +73,11 @@ public class DialUp extends MailMan {
 					content.append(System.lineSeparator());
 				}
 			}
-		}finally {
+		}catch (IOException e){
+			System.out.println("Error getting data from server:");
+			System.out.println(e.toString());
+		}
+		finally {
 
 			con.disconnect();
 		}

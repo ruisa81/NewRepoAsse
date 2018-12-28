@@ -8,9 +8,12 @@ public class Task {
 
 
 	private String taskId;
-	private boolean done = false;
-	private boolean queued = false;
-	private boolean okay = false;
+	private boolean solved = false;
+	private boolean haveJson = false;
+	private boolean haveDestination = false;
+
+
+
 	public String jsonTask = "Empty";
 	public String answer = "We have a problem";
 
@@ -19,15 +22,26 @@ public class Task {
 		this.origin = origin;
 		this.destination = destination;
 		this.jsonTask = json;
-		this.setDone(false);
-		this.setOkay(true);
-		this.setQueued(false);
+		this.setSolved(false);
+		this.setHaveDestination(true);
+		this.setHaveJson(false);
 		this.answer = "Not answered yet";
+	}
+
+	public Task(String taskNumber){
+		this.origin = MailMan.getURL_BASE()+taskNumber;
+		this.setHaveJson(false);
+		this.setSolved(false);
+
 	}
 
 
 	public String getTaskId() {
 		return taskId;
+	}
+
+	public void setJsonTask(String jsonTask) {
+		this.jsonTask = jsonTask;
 	}
 
 	public String getAnswer() {
@@ -46,18 +60,18 @@ public class Task {
 		return destination;
 	}
 
-	public void setDone(boolean b) {
-		done = b;
+	public void setSolved(boolean b) {
+		this.solved = b;
 	}
 
 
-	public void setQueued(boolean b) {
-		queued = b;
+	public void setHaveJson(boolean b) {
+		this.haveJson = b;
 	}
 
 
-	public void setOkay(boolean b) {
-		okay = b;
+	public void setHaveDestination(boolean b) {
+		this.haveDestination = b;
 	}
 
 

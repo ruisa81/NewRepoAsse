@@ -22,10 +22,7 @@ public class TaskHandler implements Tasks {
 		return null;
 	}
 
-	@Override
-	public boolean createFileTask(Task task) {
-		return false;
-	}
+
 
 	@Override
 	public Collection<Task> getActiveTasks() {

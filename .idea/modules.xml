@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NewRepoAsse.iml" filepath="$PROJECT_DIR$/NewRepoAsse.iml" />
       <module fileurl="file://$PROJECT_DIR$/parser/parser.iml" filepath="$PROJECT_DIR$/parser/parser.iml" />
-      <module fileurl="file://$PROJECT_DIR$/speaker/speaker.iml" filepath="$PROJECT_DIR$/speaker/speaker.iml" />
     </modules>
   </component>
 </project>
