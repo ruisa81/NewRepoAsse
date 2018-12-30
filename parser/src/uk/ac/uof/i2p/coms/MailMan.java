@@ -18,15 +18,12 @@ public class MailMan {
 	public MailMan() {
 		this.studentId = DEFAULT_STUDENT;
 		setAddress(STUDENT_PATH + studentId);
-
-		System.out.println("MailMan created with address: " + this.address);
 	}
+
 
 	public MailMan(String studentId) {
 		this.studentId = studentId;
 		setAddress(STUDENT_PATH + studentId);
-
-		System.out.println("MailMan created with address: " + this.address);
 	}
 
 	public String getAddress() {

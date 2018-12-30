@@ -52,6 +52,10 @@ public class Symbol extends Value {
 	}
 
 
+	public void printSymbol(){
+		System.out.println("Symbol type: " + type);
+		System.out.print(" | Symbol value: " + value);
+	}
 
 
 

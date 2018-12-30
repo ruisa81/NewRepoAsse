@@ -19,10 +19,10 @@ public interface Parser {
 		return Integer.parseInt(input);
 	}
 
-	static String executeInstruction(String instruction, Member parameters) {
+	static String executeInstruction(Member directive, Member parameters) {
+		String instruction = directive.name;
 		int result=0;
-		int size = parameters.element.size();
-		Iterator iterator = parameters.element.iterator();
+		Iterator iterator = parameters.getParameters().iterator();
 
 		switch (instruction){
 			case "add":{
@@ -42,6 +42,7 @@ public interface Parser {
 				break;
 			}
 			case "multiply":{
+				result = 1;
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
 					if (Symbol.Type.NUMBER == element.type)
@@ -77,11 +78,7 @@ public interface Parser {
 			default:
 				return "instruction not defined";
 
-
 		}
-
-
-
 		return Integer.toString(result);
 	}
 
@@ -111,7 +108,8 @@ public interface Parser {
 		result = Character.toString(c1) + string + Character.toString(c2);
 		return result;
 	}
-	
+
+
 	static Symbol parseSymbol(String value) throws IOException {
 		char c = value.charAt(0);
 		boolean isWord=false;

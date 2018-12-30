@@ -1,6 +1,6 @@
 package uk.ac.uof.i2p.coms;
 
-import uk.ac.uof.i2p.parser.Parser;
+import uk.ac.uof.i2p.parser.*;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 
 //TODO method to pass to task generator
 //TODO refactoring
@@ -17,7 +18,7 @@ import java.net.URL;
  * This is the main class to run the application
  *
  */
-public class DialUp extends MailMan {
+public class MainControl extends MailMan {
 
 	private static HttpURLConnection con;
 
@@ -33,6 +34,8 @@ public class DialUp extends MailMan {
 				System.out.println("No input student number. Using default");
 			}
 		}
+
+        System.out.println("MailMan created with address: " + sender.getAddress());
 
 
 		String message = httpGet(sender);
@@ -60,7 +63,16 @@ public class DialUp extends MailMan {
 */
 
 		}
-        System.out.println(Tasks.tasks.size());
+       	Iterator taskIterator = Tasks.tasks.iterator();
+
+		while(taskIterator.hasNext()) {
+			Task t = (Task) taskIterator.next();
+			System.out.println("____________ \n Processing task: " + t.getTaskId());
+			Json json = new Json(t.getJsonTask());
+			json.printMembers();
+
+
+		}
 	}
 
 
