@@ -35,7 +35,16 @@ public class Member {
 				default:
 					System.out.println("unknown format");
 		}
-		System.out.println(elements);
+
+		String [] split = elements.split(",");
+
+		for (int i=0 ; i<split.length ;i++){
+			if (split[i].charAt(0)== '"'){
+				split[i] = Parser.unWrapString(split[i],'"','"');
+			}
+			element.add(new Symbol(Symbol.Type.STRING , split[i]));
+		}
+
 	}
 
 	public Member(String memberName, Symbol element) {

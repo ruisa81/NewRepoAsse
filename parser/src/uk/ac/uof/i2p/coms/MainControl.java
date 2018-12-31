@@ -71,8 +71,10 @@ public class MainControl extends MailMan {
 			Json json = new Json(t.getJsonTask());
 			json.printMembers();
 
+			String result = Parser.executeInstruction(json);
+			System.out.print("result" + result);
 
-		}
+        }
 	}
 
 

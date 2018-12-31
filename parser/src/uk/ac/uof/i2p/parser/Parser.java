@@ -19,16 +19,36 @@ public interface Parser {
 		return Integer.parseInt(input);
 	}
 
-	static String executeInstruction(Member directive, Member parameters) {
-		String instruction = directive.name;
-		int result=0;
+	static String executeInstruction(Json json) {
+
+		Member instruction = null;
+		Member parameters = null;
+		Iterator memberIterator = json.members.iterator();
+
+		while (memberIterator.hasNext()){
+			Member m = (Member) memberIterator.next();
+			if(m.getName().equalsIgnoreCase("instrunction")){
+				instruction = m;
+				System.out.print("found instruction");
+			}
+
+			if(m.getName().equalsIgnoreCase("parameters")) {
+				parameters = m;
+				System.out.print("parameters");
+			}
+
+		}
+
 		Iterator iterator = parameters.getParameters().iterator();
 
-		switch (instruction){
+		int result=0;
+		switch (instruction.getName()){
 			case "add":{
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
 					if (Symbol.Type.NUMBER == element.type)
+						result += Parser.parseStringToNumber(element.value);
+					if(Symbol.Type.STRING == element.type)
 						result += Parser.parseStringToNumber(element.value);
 				}
 				break;
@@ -37,6 +57,8 @@ public interface Parser {
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
 					if (Symbol.Type.NUMBER == element.type)
+						result -= Parser.parseStringToNumber(element.value);
+					if(Symbol.Type.STRING == element.type)
 						result -= Parser.parseStringToNumber(element.value);
 				}
 				break;
