@@ -8,7 +8,11 @@ public class MailMan {
 		return URL_BASE;
 	}
 
-	private final static String URL_BASE = "http://i2j.openode.io";
+	public static String getUrlBase() {
+		return URL_BASE;
+	}
+
+	final static String URL_BASE = "http://i2j.openode.io";
 	private final String DEFAULT_STUDENT ="s195237";
 
 

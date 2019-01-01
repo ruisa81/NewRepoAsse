@@ -77,6 +77,13 @@ public class MainControl extends MailMan {
 				t.setAnswer("ERROR: Invalid JSON.");
 			}
 
+            try {
+                message = httpPost(sender.getUrlBase() + t.getDestination(),t.getAnswer());
+                System.out.println("Server Answer: " + message);
+            } catch (Exception e) {
+               System.out.println(e.toString());
+            }
+
         }
 	}
 
@@ -148,8 +155,8 @@ public class MainControl extends MailMan {
 			System.out.println(response.toString());
 
 		} catch (Exception exception) {
-			System.out.println("Exception during post:");
-			exception.printStackTrace();
+			System.out.println("Exception during post:" + exception.toString());
+			// exception.printStackTrace();
 		} finally {
 			wr.flush();
 			wr.close();
