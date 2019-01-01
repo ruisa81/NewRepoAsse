@@ -2,6 +2,7 @@ package uk.ac.uof.i2p.parser;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 
 public interface Parser {
 
@@ -19,47 +20,29 @@ public interface Parser {
 		return Integer.parseInt(input);
 	}
 
-	static String executeInstruction(Json json) {
+	static String executeInstruction(String instruction, List parameters) {
 
-		Member instruction = null;
-		Member parameters = null;
-		Iterator memberIterator = json.members.iterator();
 
-		while (memberIterator.hasNext()){
-			Member m = (Member) memberIterator.next();
-			if(m.getName().equalsIgnoreCase("instrunction")){
-				instruction = m;
-				System.out.print("found instruction");
-			}
-
-			if(m.getName().equalsIgnoreCase("parameters")) {
-				parameters = m;
-				System.out.print("parameters");
-			}
-
-		}
-
-		Iterator iterator = parameters.getParameters().iterator();
+		Iterator iterator = parameters.iterator();
 
 		int result=0;
-		switch (instruction.getName()){
+		switch (instruction){
 			case "add":{
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
-					if (Symbol.Type.NUMBER == element.type)
-						result += Parser.parseStringToNumber(element.value);
-					if(Symbol.Type.STRING == element.type)
-						result += Parser.parseStringToNumber(element.value);
+					int value = element.getIntValue();
+					System.out.println("values: " + value);
+					result = result + value;
 				}
 				break;
 			}
 			case "subtract": {
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
-					if (Symbol.Type.NUMBER == element.type)
-						result -= Parser.parseStringToNumber(element.value);
-					if(Symbol.Type.STRING == element.type)
-						result -= Parser.parseStringToNumber(element.value);
+					int val1 = element.getIntValue();
+					element = (Symbol) iterator.next();
+					int val2 = element.getIntValue();
+					result =  val1 - val2;
 				}
 				break;
 			}
@@ -67,22 +50,23 @@ public interface Parser {
 				result = 1;
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
-					if (Symbol.Type.NUMBER == element.type)
-						result *= Parser.parseStringToNumber(element.value);
+					int value = element.getIntValue();
+					System.out.println("value" + value);
+					result =  value * result ;
 				}
 				break;
 			}
 			case "divide":{
 
 					Symbol element = (Symbol) iterator.next();
-					int val1 = Parser.parseStringToNumber(element.value);
+					int val1 = element.getIntValue();
 					iterator.next();
-					int val2 = Parser.parseStringToNumber(element.value);
+					int val2 = element.getIntValue();
 					result = val1/val2;
 
 				break;
 			}
-			case "append":{
+			case "concat":{
 				StringBuilder str = new StringBuilder("");
 				while(iterator.hasNext()){
 					Symbol element = (Symbol) iterator.next();
@@ -136,10 +120,10 @@ public interface Parser {
 		char c = value.charAt(0);
 		boolean isWord=false;
 
-		if (Character.isWhitespace(c) && isWord) {
-			return parseSymbol(value.substring(1));
-		} else
-			if (Character.isLetterOrDigit(c)) {
+		try {
+			if (Character.isWhitespace(c) && isWord) {
+				return parseSymbol(value.substring(1));
+			} else if (Character.isLetterOrDigit(c)) {
 				StringBuffer word = new StringBuffer();
 				while (Character.isLetterOrDigit((char) c)) {
 					word.append((char) c);
@@ -147,26 +131,30 @@ public interface Parser {
 				}
 				return new Symbol(Symbol.Type.WORD, word.toString());
 			}
-		
-		// everything else
-		switch (c) {
-			case '{':
-				return new Symbol(Symbol.Type.OOPEN, "{");
-			case '}':
-				return new Symbol(Symbol.Type.OCLOSE, "}");
-			case '"':
-				return new Symbol(Symbol.Type.ST_WRAP, "\"");
-			case '[':
-				return new Symbol(Symbol.Type.ASTART, "[");
-			case ']':
-				return new Symbol(Symbol.Type.ACLOSE, "]");
-			case ',':
-				return new Symbol(Symbol.Type.SEPARATOR, ",");
-			case ':':
-				return new Symbol(Symbol.Type.DEFINE, ":");
-			default:
-				return new Symbol(Symbol.Type.OTHER, Character.toString((char) c));
-		}
+
+			// everything else
+			switch (c) {
+				case '{':
+					return new Symbol(Symbol.Type.OOPEN, "{");
+				case '}':
+					return new Symbol(Symbol.Type.OCLOSE, "}");
+				case '"':
+					return new Symbol(Symbol.Type.ST_WRAP, "\"");
+				case '[':
+					return new Symbol(Symbol.Type.ASTART, "[");
+				case ']':
+					return new Symbol(Symbol.Type.ACLOSE, "]");
+				case ',':
+					return new Symbol(Symbol.Type.SEPARATOR, ",");
+				case ':':
+					return new Symbol(Symbol.Type.DEFINE, ":");
+				default:
+					return new Symbol(Symbol.Type.OTHER, Character.toString((char) c));
+			}
+		}catch (Exception e){
+					}
+		System.out.println("parseSymbol issue");
+		return null;
 
 	}
 

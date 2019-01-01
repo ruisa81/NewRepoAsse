@@ -33,9 +33,7 @@ public class Symbol extends Value {
 	}
 
 	public String getValue() {
-		if (type == Type.NUMBER) {
-			return Integer.toString(getIntValue());
-		}
+
 		return value;
 	}
 
@@ -44,16 +42,13 @@ public class Symbol extends Value {
 	}
 
 	public int getIntValue() {
-		if (type != Type.NUMBER) {
-			System.out.println("Symbol is not an integer");
-			return -999;
-		}else
-			return Integer.parseInt(value);
+		//System.out.println("Symbol value: " + this.value);
+		return Integer.parseInt(value);
 	}
 
 
 	public void printSymbol(){
-		System.out.println("Symbol type: " + type + " | Symbol value: " + value);
+		System.out.println("Symbol type: " + type + " | Symbol value: " + value + "|");
 
 	}
 

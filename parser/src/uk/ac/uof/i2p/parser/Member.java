@@ -57,7 +57,7 @@ public class Member {
 	}
 
 	public void printMember(){
-		System.out.println("Member name: " + name);
+		System.out.println("Member name: " + name +"|");
 		Iterator i = element.iterator();
 		while (i.hasNext()){
 
@@ -67,4 +67,12 @@ public class Member {
 	}
 
 
+	public String getInstruction() {
+		if(this.getName().compareTo("instruction")==0)
+			return element.get(0).getValue();
+
+		else
+			System.out.println("this member does not have an instruction");
+			return null;
+	}
 }

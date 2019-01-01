@@ -60,9 +60,7 @@ public class MainControl extends MailMan {
 			System.out.println(t.getDestination());
 			System.out.println(t.getTaskId());
 			System.out.println(t.getJsonTask()+"\n");
-*/
-
-		}
+*/		}
        	Iterator taskIterator = Tasks.tasks.iterator();
 
 		while(taskIterator.hasNext()) {
@@ -71,8 +69,13 @@ public class MainControl extends MailMan {
 			Json json = new Json(t.getJsonTask());
 			json.printMembers();
 
-			String result = Parser.executeInstruction(json);
-			System.out.print("result" + result);
+			try {
+				String result = Parser.executeInstruction(json.getInstruction(), json.getParameters());
+				t.setAnswer(result);
+				System.out.println("result: " + result);
+			}catch (Exception e){
+				t.setAnswer("ERROR: Invalid JSON.");
+			}
 
         }
 	}
