@@ -140,6 +140,8 @@ public class MainControl extends MailMan {
 			System.out.println("Post parameters : " + parameters);
 			if (responseCode!=200) {
 				System.out.println("Response Code : " + responseCode);
+				if(responseCode == 400)
+				    System.out.println("Wrong Answer");
 			}
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
