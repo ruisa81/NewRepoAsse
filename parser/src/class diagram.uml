@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="258.0" y="1415.5">uk.ac.uof.i2p.coms.Tasks</node>
+    <node x="172.70833333333334" y="0.0">uk.ac.uof.i2p.parser.Symbol.Type</node>
+    <node x="205.55432692307696" y="802.0">uk.ac.uof.i2p.parser.Parser</node>
+    <node x="340.6588141025641" y="1693.0">uk.ac.uof.i2p.coms.MainControl</node>
+    <node x="100.06330128205133" y="588.0">uk.ac.uof.i2p.parser.Symbol</node>
+    <node x="23.37500000000003" y="1393.0">uk.ac.uof.i2p.parser.Json</node>
+    <node x="561.2294871794873" y="1338.0">uk.ac.uof.i2p.coms.MailMan</node>
+    <node x="294.2294871794872" y="1014.0">uk.ac.uof.i2p.coms.Task</node>
+    <node x="0.0" y="1069.0">uk.ac.uof.i2p.parser.Member</node>
+    <node x="26.39663461538464" y="420.0">uk.ac.uof.i2p.parser.Value</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="uk.ac.uof.i2p.coms.MainControl" target="uk.ac.uof.i2p.coms.Task">
+      <point x="-24.666666666666686" y="-59.5" />
+      <point x="426.99214743589744" y="1673.0" />
+      <point x="444.5" y="1673.0" />
+      <point x="444.5" y="1313.0" />
+      <point x="447.9794871794872" y="1313.0" />
+      <point x="30.75" y="137.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.coms.MainControl" target="uk.ac.uof.i2p.coms.Tasks">
+      <point x="-49.33333333333337" y="-59.5" />
+      <point x="402.32548076923075" y="1653.0" />
+      <point x="346.0" y="1653.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.coms.MainControl" target="uk.ac.uof.i2p.coms.MailMan">
+      <point x="98.66666666666663" y="-59.5" />
+      <point x="550.3254807692308" y="1673.0" />
+      <point x="732.8961538461539" y="1673.0" />
+      <point x="68.66666666666669" y="137.5" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Json" target="uk.ac.uof.i2p.parser.Member">
+      <point x="-79.125" y="-82.5" />
+      <point x="49.75000000000003" y="1313.0" />
+      <point x="33.33333333333337" y="1313.0" />
+      <point x="-66.66666666666663" y="82.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Symbol" target="uk.ac.uof.i2p.parser.Value">
+      <point x="-75.41666666666674" y="-82.0" />
+      <point x="115.14663461538458" y="568.0" />
+      <point x="59.89663461538464" y="568.0" />
+      <point x="-67.0" y="59.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.coms.Tasks" target="uk.ac.uof.i2p.coms.Task">
+      <point x="-44.0" y="-60.0" />
+      <point x="302.0" y="1313.0" />
+      <point x="324.9794871794872" y="1313.0" />
+      <point x="-92.25" y="137.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Parser" target="uk.ac.uof.i2p.parser.Symbol">
+      <point x="-90.33333333333331" y="-81.0" />
+      <point x="250.72099358974364" y="782.0" />
+      <point x="226.76330128205137" y="782.0" />
+      <point x="36.200000000000045" y="82.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Member" target="uk.ac.uof.i2p.parser.Parser">
+      <point x="80.0" y="-82.0" />
+      <point x="180.0" y="984.0" />
+      <point x="239.42932692307696" y="984.0" />
+      <point x="-101.625" y="81.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.coms.Task" target="uk.ac.uof.i2p.parser.Parser">
+      <point x="0.0" y="-137.0" />
+      <point x="417.2294871794872" y="994.0" />
+      <point x="374.9293269230769" y="994.0" />
+      <point x="33.875" y="81.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Symbol.Type" target="uk.ac.uof.i2p.parser.Symbol">
+      <point x="-8.416666666666629" y="180.0" />
+      <point x="214.7916666666667" y="400.0" />
+      <point x="237.89663461538464" y="400.0" />
+      <point x="237.89663461538464" y="558.0" />
+      <point x="205.6466346153847" y="558.0" />
+      <point x="15.083333333333371" y="-82.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Json" target="uk.ac.uof.i2p.parser.Parser">
+      <point x="79.125" y="-82.5" />
+      <point x="208.00000000000003" y="1313.0" />
+      <point x="233.6669871794872" y="1313.0" />
+      <point x="233.6669871794872" y="994.0" />
+      <point x="307.1793269230769" y="994.0" />
+      <point x="-33.875" y="81.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Member" target="uk.ac.uof.i2p.parser.Symbol">
+      <point x="-40.0" y="-82.0" />
+      <point x="60.0" y="994.0" />
+      <point x="77.08717948717947" y="994.0" />
+      <point x="77.08717948717947" y="772.0" />
+      <point x="118.16330128205135" y="772.0" />
+      <point x="-72.39999999999998" y="82.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Value" target="uk.ac.uof.i2p.parser.Symbol">
+      <point x="67.0" y="59.0" />
+      <point x="193.89663461538464" y="568.0" />
+      <point x="175.47996794871796" y="568.0" />
+      <point x="-15.083333333333371" y="-82.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Value" target="uk.ac.uof.i2p.parser.Symbol.Type">
+      <point x="0.0" y="-59.0" />
+      <point x="126.89663461538464" y="400.0" />
+      <point x="197.95833333333334" y="400.0" />
+      <point x="-25.25" y="180.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.coms.MainControl" target="uk.ac.uof.i2p.parser.Parser">
+      <point x="24.66666666666663" y="-59.5" />
+      <point x="476.32548076923075" y="1643.0" />
+      <point x="550.7294871794873" y="1643.0" />
+      <point x="550.7294871794873" y="994.0" />
+      <point x="442.6793269230769" y="994.0" />
+      <point x="101.625" y="81.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Member" target="uk.ac.uof.i2p.parser.Symbol.Type">
+      <point x="-80.0" y="-82.0" />
+      <point x="20.0" y="994.0" />
+      <point x="15.896634615384613" y="994.0" />
+      <point x="15.896634615384613" y="390.0" />
+      <point x="181.12499999999997" y="390.0" />
+      <point x="-42.08333333333337" y="180.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Parser" target="uk.ac.uof.i2p.parser.Symbol.Type">
+      <point x="90.33333333333337" y="-81.0" />
+      <point x="431.3876602564103" y="782.0" />
+      <point x="400.5209935897436" y="782.0" />
+      <point x="400.5209935897436" y="400.0" />
+      <point x="265.29166666666674" y="400.0" />
+      <point x="42.08333333333337" y="180.0" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.coms.MainControl" target="uk.ac.uof.i2p.parser.Json">
+      <point x="-98.66666666666674" y="-59.5" />
+      <point x="352.9921474358974" y="1673.0" />
+      <point x="76.12500000000003" y="1673.0" />
+      <point x="-52.75" y="82.5" />
+    </edge>
+    <edge source="uk.ac.uof.i2p.parser.Symbol" target="uk.ac.uof.i2p.parser.Symbol.Type">
+      <point x="45.25" y="-82.0" />
+      <point x="235.81330128205133" y="568.0" />
+      <point x="248.89663461538464" y="568.0" />
+      <point x="248.89663461538464" y="390.0" />
+      <point x="231.62499999999997" y="390.0" />
+      <point x="8.416666666666629" y="180.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.904320987654321" x="351.59726962457336" y="1529.9180887372013" />
+  <SelectedNodes>
+    <node>uk.ac.uof.i2p.coms.Tasks</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
