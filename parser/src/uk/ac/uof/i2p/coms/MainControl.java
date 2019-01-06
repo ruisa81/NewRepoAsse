@@ -1,6 +1,7 @@
 package uk.ac.uof.i2p.coms;
 
-import uk.ac.uof.i2p.parser.*;
+import uk.ac.uof.i2p.parser.Json;
+import uk.ac.uof.i2p.parser.Parser;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -10,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Iterator;
 
-//TODO method to pass to task generator
+
 //TODO refactoring
 //TODO java docs
 
@@ -55,7 +56,7 @@ public class MainControl extends MailMan {
 			t.setJsonTask(jSonCode.trim());
 
 			Tasks.tasks.add(t);
-/*control block on the task set up
+/*control block for the task set up
 			System.out.println(t.getOrigin());
 			System.out.println(t.getDestination());
 			System.out.println(t.getTaskId());
@@ -78,7 +79,7 @@ public class MainControl extends MailMan {
 			}
 
             try {
-                message = httpPost(sender.getUrlBase() + t.getDestination(),t.getAnswer());
+                message = httpPost(getUrlBase() + t.getDestination(),t.getAnswer());
                 System.out.println("Server Answer: " + message);
             } catch (Exception e) {
                System.out.println(e.toString());

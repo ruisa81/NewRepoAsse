@@ -42,7 +42,7 @@ public interface Parser {
 					int val1 = element.getIntValue();
 					element = (Symbol) iterator.next();
 					int val2 = element.getIntValue();
-					result =  val1 - val2;
+					result =  val1 - val1;
 				}
 				break;
 			}
